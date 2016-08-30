@@ -185,3 +185,11 @@ $('button.edit-labels').on('click', function () {
     $editedText.text($(this).val());
   });
 });
+
+$('button.make-img').on('click', function () {
+  $('svg.map').toImage();
+});
+
+$('.attributions').on('click', function () {
+  $('.credits-container').toggleClass('hidden');
+});

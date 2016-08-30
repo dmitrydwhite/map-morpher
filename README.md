@@ -1,13 +1,18 @@
-# Dmitry's Fantasy Map Tool
+# Map-Morpher
+A web interface by Dmitry White
+Using the terrain generation engine by [mewo2][mewo2]
 
-## Dev Notes
-### Notes on UI
-* Small, Medium, or Large Map
-* Add random terrain elements
-* Erode the map
-* Determine number of central cities/territories and number of smaller cities
-* Generate the map
-* Present a way to update labels
+## A Web Interface for Generating Cool and Realistic Fantasy Maps
+When I saw [mewo2's project][notes], it was one of those moments where I was like, "Wow, I wish I had done that!"  Additionally, all of my kids love spending hours poring over Tolkien's maps or maps of other fantasy lands, as well as building their own maps and their own fantastical stories.
+
+I showed them mewo2's page, they were ecstatic; but they only had three complaints:
+1. The maps on the page were too small.
+2. They wanted to be able to make up their own names
+3. They wanted to be able to print the maps out
+
+So far, this project solves the first two issues, and I am currently working on the third.
+
+Link to the project at [https://dmitrydwhite.github.io/terrain/]
 
 ## Attribution
 This is a web interface for the amazing fantasy map generating algorithms by [mewo2][mewo2], who I have never met but can only assume is a genius.  I am using his code found [here][githubTerrain] as the underlying engine for my interface.

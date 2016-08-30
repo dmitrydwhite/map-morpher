@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
   <link href="./styles/controls.css" rel="stylesheet" type="text/css">
   <link href="./styles/map.css" rel="stylesheet" type="text/css">
-  <title>Fantasy Terrain Tool</title>
+  <title>Map Morpher</title>
 </head>
 <body>
+  <div class="title-bar">
+    <div class="title-text">
+      Map Morpher
+    </div>
+    <i class="material-icons mountain">filter_hdr</i>
+  </div>
   <div id="workpane">
     <div class="mappane">
       <svg class="map"></svg>
@@ -67,7 +74,29 @@
           </div>
         </div>
       </div>
+      
+      <div class="type-controls image-btn">
+        <button class="make-img">Convert to Image</button>
+      </div>
+    </div>
+  </div>
 
+  <div class="credits-bar">
+    <i class="material-icons copyright">copyright</i>
+    <div class="me-attr">
+      2016 Dmitry White
+    </div>
+    <div class="attributions">
+      Attributions
+    </div>
+    <div class="credits-container hidden">
+      <ul class="credits-list">
+        <li><a href="https://github.com/mewo2/terrain">mewo2's Terrain Code</a></li>
+        <li><a href="https://github.com/mewo2/naming-language">mewo2's Language Code</a></li>
+        <li><a href="https://github.com/adamhooper/js-priority-queue">adamhooper's Priority Queue</a></li>
+        <li><a href="https://jquery.com/">jQuery</a></li>
+        <li><a href="https://github.com/d3">d3</a></li>
+      </ul>
     </div>
   </div>
 
