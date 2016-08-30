@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+  <link href="./styles/controls.css" rel="stylesheet" type="text/css">
+  <link href="./styles/map.css" rel="stylesheet" type="text/css">
+  <title>Fantasy Terrain Tool</title>
+</head>
+<body>
+  <div id="workpane">
+    <div class="mappane">
+      <svg class="map"></svg>
+    </div>
+    <div class="controlspane">
+      <h2>Controls</h2>
+      <div class="type-controls terrain-controls">
+        <h3>Terrain Controls</h3>
+        <div class="create-map">
+          <h4>New Map Creation</h4>
+          <button class="small-map" data-generate="true" data-size="small">New Coarse Map</button>
+          <button class="med-map" data-generate="true" data-size="medium">New Medium Map</button>
+          <button class="lrg-map" data-generate="true" data-size="large">New Fine Map</button>
+        </div>
+
+        <div class="make-terrain">
+          <h4>Terrain Controls</h4>
+          <div class="btn-row">
+            <button class="terr-slope" data-operation="slope">Add a Random Slope</button>
+            <button class="terr-cone" data-operation="cone">Raise Map Center</button>
+            <button class="terr-invert" data-operation="invert">Lower Map Center</button>
+          </div>
+          <div class="btn-row">
+            <input class="terr-blob-num" value="16" />
+            <button class="terr-blobs" data-operation="blobs">Add Blobs</button>
+          </div>
+          <div class="btn-row">
+            <button class="terr-norm" data-operation="norm">Normalize</button>
+            <button class="terr-round" data-operation="round">Round Hills</button>
+            <button class="terr-relax" data-operation="relax">Relax Terrain</button>
+            <button class="terr-seas" data-operation="seas">Set Sea Level to Median</button>
+          </div>
+        </div>
+
+        <div class="erode-terrain">
+          <h4>Erosion Controls</h4>
+          <button class="terr-young" data-terrain-age="young">Young Landscape</button>
+          <button class="terr-medium" data-terrain-age="medium">Medium Landscape</button>
+          <button class="terr-old" data-terrain-age="old">Old Landscape</button>
+          <button class="terr-ancient" data-terrain-age="ancient">Ancient Landscape</button>
+        </div>
+
+        <button class="section-button finalize-terrain">USE THIS TERRAIN</button>
+      </div>
+
+      <div class="type-controls political-controls">
+        <h3>Civic Controls</h3>
+        <div class="civic-cities">
+          <label for="major-cities">Major Cities / Regions</label>
+          <input name="major-cities" value="5" />
+          <label for="minor-cities">Minor Cities</label>
+          <input name="minor-cities" value="5" />
+          <div class="btn-row">
+            <button class="civic-make">Add All <span class="total-cities"></span>Cities</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="./lib/priority-queue.min.js"></script>
+  <script src="./language.js"></script>
+  <script src="./terrain.js"></script>
+  <script src="./controls.js"></script>
+</body>
+</html>

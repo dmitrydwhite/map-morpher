@@ -1,0 +1,42 @@
+h2, h3, h4 {
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+#workpane {
+  min-width: 100%;
+  min-height: 800px;
+  background-color: white;
+}
+
+.mappane {
+  min-width: 800px;
+  min-height: 800px;
+  float: left;
+}
+
+.controlspane {
+  float: left;
+}
+
+.terr-blob-num {
+  max-width: 16px;
+}
+
+.btn-row {
+  padding-bottom: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+.type-controls {
+  border-bottom: 1px solid grey;
+}
+
+.section-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  min-height: 2em;
+}
