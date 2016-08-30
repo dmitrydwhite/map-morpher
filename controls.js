@@ -125,7 +125,7 @@ $('.erode-terrain').find('button').on('click', function (evt) {
 $('.terrain-controls').find('button.finalize-terrain').on('click', function () {
 
   $('.terrain-controls').find('button, input').not('[data-generate=true]').prop('disabled', true);
-  $('.political-controls').find('button, input').prop('disabled', false);
+  $('.political-controls').find('button, input').not('.edit-labels').prop('disabled', false);
 
   PoliticalMap = {
     h: WorkingMap,
@@ -140,11 +140,48 @@ $('.terrain-controls').find('button.finalize-terrain').on('click', function () {
 $('.political-controls').find('button.civic-make').on('click', function () {
   var majors = $('input[name=major-cities]').val();
   var minors = $('input[name=minor-cities]').val();
+  var total = parseInt(majors) + parseInt(minors);
 
-  PoliticalMap.params.nterrs = majors;
-  PoliticalMap.params.ncities = minors;
+  // Clean out any old editing inputs
+  $('.label-input').remove();
+
+  total = total < 25 ? total : 24;
+
+  PoliticalMap.cities = [];
+
+  PoliticalMap.params.nterrs = parseInt(majors);
+  PoliticalMap.params.ncities = total;
 
   placeCities(PoliticalMap);
 
+  $('svg.map').empty();
   drawLineMap();
-})
+  $('button.edit-labels').prop('disabled', false);
+});
+
+$('button.edit-labels').on('click', function () {
+  var labels;
+
+  drawMap(d3svg, PoliticalMap);
+
+  labels = $('svg.map').find('text');
+
+  for (var k=0; k<labels.length; k++) {
+    var refString = 'text_correl_' + k;
+    var $textRef = $(labels[k]);
+    var $currentInput = $('<input class="label-input" data-text-relative="' + refString +'" />');
+
+    $textRef.addClass(refString);
+
+    $currentInput.val($textRef.text());
+
+    $('.political-controls').append($currentInput);
+  }
+
+  $('.label-input').on('keyup', function () {
+    var reference = $(this).data('textRelative');
+    var $editedText = $('text.' + reference);
+
+    $editedText.text($(this).val());
+  });
+});

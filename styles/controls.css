@@ -40,3 +40,11 @@ h2, h3, h4 {
   margin-bottom: 8px;
   min-height: 2em;
 }
+
+.label-input {
+  display: block;
+}
+
+text.editing-label {
+  background-color: lightblue;
+}
