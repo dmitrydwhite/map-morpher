@@ -3,8 +3,29 @@ h2, h3, h4 {
   margin-bottom: 4px;
 }
 
+h2 {
+  border-bottom: 1px solid black;
+}
+
 .container {
   position: relative;
+  font-family: Helvetica;
+}
+
+button {
+  height: 2em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  color: black;
+  cursor: pointer;
+  margin: 3px;
+}
+
+button:disabled {
+  background-color: lightgrey;
+  color: grey;
+  border: grey;
 }
 
 .title-bar {
@@ -43,7 +64,8 @@ h2, h3, h4 {
   float: left;
 }
 
-.terr-blob-num {
+.terr-blob-num,
+.city-count {
   max-width: 16px;
 }
 
