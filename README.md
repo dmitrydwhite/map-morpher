@@ -11,8 +11,6 @@ I showed them mewo2's page, they were ecstatic; but they only had three complain
 2. They wanted to be able to make up their own names
 3. They wanted to be able to print the maps out
 
-So far, this project solves the first two issues, and I am currently working on the third.
-
 Link to the project at https://dmitrydwhite.github.io/map-morpher/
 
 ## Attribution
