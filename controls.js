@@ -80,6 +80,40 @@ var drawMapOfSize = function (size) {
   drawWorkingMap();
 };
 
+var openMapInNewTabForPrinting = function () {
+  var serializer = new XMLSerializer();
+  var mapSvg = document.getElementsByClassName('map')[0];
+  var doc = document.implementation.createHTMLDocument('Line Map');
+  var stylesheet = document.createElement('link');
+  var printBtn = document.createElement('button');
+  var printScriptMin = 'javascript:var btnCont = document.getElementsByTagName("button")[0]; btnCont.remove(); window.print(); document.body.appendChild(btnCont);'
+
+  var stylesheetAttrs = {
+    'href': './styles/map.css',
+    'rel': 'stylesheet',
+    'type': 'text/css'
+  };
+
+  var newHtml, svgWin;
+
+  for (var attrib in stylesheetAttrs) {
+    if (stylesheetAttrs.hasOwnProperty(attrib)) {
+      stylesheet.setAttribute(attrib, stylesheetAttrs[attrib]);
+    }
+  }
+
+  printBtn.setAttribute('onClick', printScriptMin);
+  printBtn.textContent = 'Print This Map';
+
+  doc.body.appendChild(mapSvg);
+  doc.body.appendChild(printBtn);
+  doc.head.appendChild(stylesheet);
+  newHtml = serializer.serializeToString(doc);
+  svgWin = window.open('print_window');
+  svgWin.document.write(newHtml);
+  $('.mappane').append(mapSvg);
+};
+
 $('.terrain-controls').find('button, input').not('[data-generate=true]').prop('disabled', true);
 $('.political-controls').find('button, input').prop('disabled', true);
 
@@ -162,6 +196,8 @@ $('.political-controls').find('button.civic-make').on('click', function () {
 $('button.edit-labels').on('click', function () {
   var labels;
 
+  $('button.make-img').prop('disabled', false);
+
   drawMap(d3svg, PoliticalMap);
 
   labels = $('svg.map').find('text');
@@ -187,7 +223,7 @@ $('button.edit-labels').on('click', function () {
 });
 
 $('button.make-img').on('click', function () {
-  $('svg.map').toImage();
+  openMapInNewTabForPrinting();
 });
 
 $('.attributions').on('click', function () {
