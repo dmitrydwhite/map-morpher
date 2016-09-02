@@ -3,6 +3,10 @@ h2, h3, h4 {
   margin-bottom: 4px;
 }
 
+.container {
+  position: relative;
+}
+
 .title-bar {
   background-color: black;
   color: white;
@@ -75,6 +79,9 @@ text.editing-label {
   font-family: Arial;
   height: 32px;
   position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-top: 9px;
 }
 
 .material-icons.copyright,
