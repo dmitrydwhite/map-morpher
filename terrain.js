@@ -1,4 +1,9 @@
 "use strict";
+var PriorityQueue = require('js-priority-queue');
+var NL = require('naming-language');
+var d3 = require('d3');
+
+var Terrain = function () {
 
 function runif(lo, hi) {
     return lo + Math.random() * (hi - lo);
@@ -858,7 +863,7 @@ function drawLabels(svg, render) {
     var cities = render.cities;
     var nterrs = render.params.nterrs;
     var avoids = [render.rivers, render.coasts, render.borders];
-    var lang = makeRandomLanguage();
+    var lang = NL.makeRandomLanguage();
     var citylabels = [];
     function penalty(label) {
         var pen = 0;
@@ -897,7 +902,7 @@ function drawLabels(svg, render) {
     for (var i = 0; i < cities.length; i++) {
         var x = h.mesh.vxs[cities[i]][0];
         var y = h.mesh.vxs[cities[i]][1];
-        var text = makeName(lang, 'city');
+        var text = NL.makeName(lang, 'city');
         var size = i < nterrs ? params.fontsizes.city : params.fontsizes.town;
         var sx = 0.65 * size/1000 * text.length;
         var sy = size/1000;
@@ -961,7 +966,7 @@ function drawLabels(svg, render) {
     var reglabels = [];
     for (var i = 0; i < nterrs; i++) {
         var city = cities[i];
-        var text = makeName(lang, 'region');
+        var text = NL.makeName(lang, 'region');
         var sy = params.fontsizes.region / 1000;
         var sx = 0.6 * text.length * sy;
         var lc = terrCenter(h, terr, city, true);
@@ -1071,3 +1076,33 @@ var defaultParams = {
     }
 }
 
+    return {
+        slope: slope,
+        cone: cone,
+        mountains: mountains,
+        normalize: normalize,
+        peaky: peaky,
+        relax: relax,
+        setSeaLevel: setSeaLevel,
+        visualizeVoronoi: visualizeVoronoi,
+        drawPaths: drawPaths,
+        contour: contour,
+        getRivers: getRivers,
+        getTerritories: getTerritories,
+        getBorders: getBorders,
+        visualizeSlopes: visualizeSlopes,
+        visualizeCities: visualizeCities,
+        generateGoodMesh: generateGoodMesh,
+        zero: zero,
+        defaultParams: defaultParams,
+        add: add,
+        randomVector: randomVector,
+        doErosion: doErosion,
+        cleanCoast: cleanCoast,
+        fillSinks: fillSinks,
+        placeCities: placeCities,
+        drawMap: drawMap
+    };
+};
+
+module.exports = new Terrain();
